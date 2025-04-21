@@ -6,6 +6,7 @@ The game has been reprogrammed almost from the ground up
 - More code documentation
 - `SAPSprite` - Custom modified `FlxSprite` made for QOL.
 ### Changed
+- The `TitleState` intro sequence now uses `RetroCameraFade` (another FNF thing)
 - `GENERATED_BY` is now `GAME_WATERMARK`
 - The `DONE` title sequence is now `COMPLETE`
 - `TitleStates` is now `TitleSequences` and now uses string values instead of integers

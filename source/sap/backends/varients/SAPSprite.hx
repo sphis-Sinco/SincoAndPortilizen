@@ -19,12 +19,15 @@ class SAPSprite extends FlxSprite
 		super(data.position[0], data.position[1]);
 
                 var imageType:String = null;
-                if (data.imageType != null) imageType = data.imageType;
+                if (data.imageType != null) imageType = data.imageType; else imageType = 'pixel-spritesheet';
 
 		switch (imageType.toLowerCase())
 		{
 			default:
-				loadGraphic(FileManager.getImageFile(data.imagePath), data.imageAnimated, data.imageDimensions[0], data.imageDimensions[1]);
+                                final animated:Null<Bool> = data.imageAnimated ? true : false;
+                                final dimensions:Array<Int> = (data.imageDimensions == null) ? [16,16] : data.imageDimensions; 
+
+				loadGraphic(FileManager.getImageFile(data.imagePath), animated, dimensions[0], dimensions[1]);
 		}
 
 		Global.scaleSprite(this);

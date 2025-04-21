@@ -23,8 +23,10 @@ class TitleState extends State
 
 	public static var SINCO:SAPSprite;
 	public static var PORTILIZEN:SAPSprite;
-        
-        public static var PRESS_ANY:SAPSprite;
+
+	public static var PRESS_ANY:SAPSprite;
+
+	public static var VERSION_TEXT:FlxText;
 
 	override public function new()
 	{
@@ -83,13 +85,18 @@ class TitleState extends State
 		SINCO.animation.play('walk');
 		PORTILIZEN.animation.play('walk');
 
-                PRESS_ANY = new SAPSprite({
-                        position: [0,FlxG.height - (16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER)],
-                        imagePath: 'titlescreen/PressAnyToPlay'
-                });
-                PRESS_ANY.screenCenter(X);
-                add(PRESS_ANY);
-                PRESS_ANY.visible = false;
+		PRESS_ANY = new SAPSprite({
+			position: [0, FlxG.height - (16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER)],
+			imagePath: 'titlescreen/PressAnyToPlay'
+		});
+		PRESS_ANY.screenCenter(X);
+		add(PRESS_ANY);
+		PRESS_ANY.visible = false;
+
+		VERSION_TEXT = new FlxText(10, 10, 0, Global.GAME_WATERMARK, 12);
+		VERSION_TEXT.color = 0x000000;
+		add(VERSION_TEXT);
+                VERSION_TEXT.visible = false;
 
 		if (SEQUENCE == INTRO || SEQUENCE == DEBUG)
 		{
@@ -129,7 +136,8 @@ class TitleState extends State
 	{
 		RetroCameraFade.fadeFromWhite(FlxG.camera, 12, 1);
 
-                PRESS_ANY.visible = BACKGROUND.visible = true;
+                // :)
+                VERSION_TEXT.visible = PRESS_ANY.visible = BACKGROUND.visible = true;
 
 		SEQUENCE = COMPLETE;
 	}

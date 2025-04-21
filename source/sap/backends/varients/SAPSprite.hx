@@ -11,6 +11,7 @@ typedef SAPSpriteData =
 	// Aesprite spritesheets
 	var ?imageAnimated:Bool;
 	var ?imageDimensions:Array<Int>;
+	var ?imageAnimations:Array<Array<Dynamic>>;
 }
 
 class SAPSprite extends FlxSprite
@@ -32,6 +33,17 @@ class SAPSprite extends FlxSprite
 				final dimensions:Array<Int> = (data.imageDimensions == null) ? [16, 16] : data.imageDimensions;
 
 				loadGraphic(FileManager.getImageFile(data.imagePath), animated, dimensions[0], dimensions[1]);
+
+                                if (animated)
+                                {
+                                        for (animArray in data.imageAnimations)
+                                        {
+                                                final frameRate:Int = (animArray[2] != null) ? animArray[2] : 30;
+                                                final loop:Bool = (animArray[3] != null) ? animArray[3] : true;
+
+                                                animation.add(animArray[0], animArray[1], frameRate, loop);
+                                        }
+                                }
 		}
 
 		Global.scaleSprite(this, data.scaleAddition ??= 0);

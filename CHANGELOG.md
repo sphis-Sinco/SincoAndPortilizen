@@ -5,6 +5,8 @@ The game has been reprogrammed almost from the ground up
 ### Added
 - More code documentation
 - `SAPSprite` - Custom modified `FlxSprite` made for QOL.
+### Removed
+- The `TitleState` character ring characters no longer use a shader
 ### Changed
 - The `TitleState` intro sequence now uses `RetroCameraFade` (another FNF thing)
 - `GENERATED_BY` is now `GAME_WATERMARK`

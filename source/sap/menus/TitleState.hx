@@ -23,6 +23,8 @@ class TitleState extends State
 
 	public static var SINCO:SAPSprite;
 	public static var PORTILIZEN:SAPSprite;
+        
+        public static var PRESS_ANY:SAPSprite;
 
 	override public function new()
 	{
@@ -81,6 +83,14 @@ class TitleState extends State
 		SINCO.animation.play('walk');
 		PORTILIZEN.animation.play('walk');
 
+                PRESS_ANY = new SAPSprite({
+                        position: [0,FlxG.height - (16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER)],
+                        imagePath: 'titlescreen/PressAnyToPlay'
+                });
+                PRESS_ANY.screenCenter(X);
+                add(PRESS_ANY);
+                PRESS_ANY.visible = false;
+
 		if (SEQUENCE == INTRO || SEQUENCE == DEBUG)
 		{
 			if (SEQUENCE == INTRO)
@@ -119,7 +129,7 @@ class TitleState extends State
 	{
 		RetroCameraFade.fadeFromWhite(FlxG.camera, 12, 1);
 
-		BACKGROUND.visible = true;
+                PRESS_ANY.visible = BACKGROUND.visible = true;
 
 		SEQUENCE = COMPLETE;
 	}

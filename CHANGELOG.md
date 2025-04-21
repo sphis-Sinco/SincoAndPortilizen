@@ -2,6 +2,8 @@
 ## 0.6.0a - 4?/??/2025
 The game has been reprogrammed almost from the ground up
 
+### Added
+- `SAPSprite` - Custom modified `FlxSprite` made for QOL.
 ### Changed
 - `State` now has a variable called `StateIdentifier` which should be initalized in `new()`
 - The company is now "SAPCrew" instead of "SAPTeam". This wipes saves, apologies.

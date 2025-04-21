@@ -23,5 +23,7 @@ class SAPSprite extends FlxSprite
 			default:
 				loadGraphic(FileManager.getImageFile(data.imagePath), data.imageAnimated, data.imageDimensions[0], data.imageDimensions[1]);
 		}
+
+		Global.scaleSprite(this);
 	}
 }

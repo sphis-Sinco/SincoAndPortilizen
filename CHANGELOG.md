@@ -3,6 +3,7 @@
 The game has been reprogrammed almost from the ground up
 
 ### Changed
+- `State` now has a variable called `StateIdentifier` which should be initalized in `new()`
 - The company is now "SAPCrew" instead of "SAPTeam". This wipes saves, apologies.
 
 ## 0.5.2a - 4/19/2025

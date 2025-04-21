@@ -1,9 +1,9 @@
 # Alpha
-## 0.5.3a - 4/19/2025
-### Fixed
-- (Desktop only) Crashes with mods that could not have the meta.json read
-### Changes
-- FileManager `readFile` can read assets with sys if sys
+## 0.6.0a - 4?/??/2025
+The game has been reprogrammed almost from the ground up
+
+### Changed
+- The company is now "SAPCrew" instead of "SAPTeam". This wipes saves, apologies.
 
 ## 0.5.2a - 4/19/2025
 ### Fixed

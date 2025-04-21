@@ -109,16 +109,17 @@ class FileManager
 	{
 		var returnPath:String = '';
 
-		for (mod in ModFolderManager.ENABLED_MODS)
-		{
-			// What if I was evil and made it so that 0.1.0 api mods couldnt do this >:)
-			var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json', posinfo);
-
-			if (returnPath == '') // first come first serve
+		/**
+			for (mod in ModFolderManager.ENABLED_MODS)
 			{
-				returnPath = getPath('mods/$mod/', '$file', PATH_TYPE, posinfo); // 'mods/$mod/$file'
+				var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json', posinfo);
+
+				if (returnPath == '') // first come first serve
+				{
+					returnPath = getPath('mods/$mod/', '$file', PATH_TYPE, posinfo); // 'mods/$mod/$file'
+				}
 			}
-		}
+		 */
 
 		if (returnPath == '')
 		{
@@ -220,21 +221,23 @@ class FileManager
 			}
 		}
 
-		for (folder in ModFolderManager.ENABLED_MODS)
-		{
-			#if EXCESS_TRACES
-			trace('Checking $folder for a scripts folder');
-			#end
-			final folder_read:Array<String> = readDirectory('${ModFolderManager.MODS_FOLDER}${folder}/');
-
-			if (folder_read.contains('scripts'))
+		/**
+			for (folder in ModFolderManager.ENABLED_MODS)
 			{
 				#if EXCESS_TRACES
-				trace('$folder has a scripts folder');
+				trace('Checking $folder for a scripts folder');
 				#end
-				scriptPaths.push('${ModFolderManager.MODS_FOLDER}${folder}/scripts/');
+				final folder_read:Array<String> = readDirectory('${ModFolderManager.MODS_FOLDER}${folder}/');
+
+				if (folder_read.contains('scripts'))
+				{
+					#if EXCESS_TRACES
+					trace('$folder has a scripts folder');
+					#end
+					scriptPaths.push('${ModFolderManager.MODS_FOLDER}${folder}/scripts/');
+				}
 			}
-		}
+		 */
 
 		for (path in scriptPaths)
 		{

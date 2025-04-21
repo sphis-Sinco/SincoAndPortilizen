@@ -38,14 +38,6 @@ class Global
 		return '${version}';
 	}
 
-	@:isVar
-	public static var GIT_VER(get, never):String;
-
-	static function get_GIT_VER():String
-	{
-		return SAPVersion.getVer();
-	}
-
 	/**
 	 * This says if its a debug build
 	 */
@@ -89,7 +81,7 @@ class Global
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
 		FlxG.save.bind(SAVE_SLOT, Application.COMPANY);
 
-		SaveManager.setupSave();
+		// SaveManager.setupSave();
 		trace('Switched save slot to "$SAVE_SLOT"');
 
 		trace('Save dump: ${FlxG.save.data}');
@@ -235,7 +227,7 @@ class Global
 	{
 		var phrase_that_works:String = phrase.toLowerCase().replace(' ', '-');
 
-		var returnPhrase:String = LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
+		var returnPhrase:String = null; // LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
 		if (returnPhrase == null)
 		{
 			returnPhrase = (fallback == null) ? phrase_that_works : fallback;
@@ -246,12 +238,10 @@ class Global
 
 	public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>):Void
 	{
-		ScriptManager.callScript(func, arguments);
 	}
 
 	public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true):Void
 	{
-		ScriptManager.setScript(name, value, allowOverride);
 	}
 
 	public static function switchState(new_state:FlxState):Void

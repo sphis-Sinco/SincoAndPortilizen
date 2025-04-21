@@ -146,6 +146,8 @@ class TitleState extends State
 	{
 		randomBGChar(SINCO, 6);
 		randomBGChar(PORTILIZEN, 4);
+
+                if (Global.keyJustReleased(ENTER)) trace('Next menu');
 	}
 
 	override function update(elapsed:Float)

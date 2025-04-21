@@ -18,7 +18,10 @@ class SAPSprite extends FlxSprite
 	{
 		super(data.position[0], data.position[1]);
 
-		switch (data.imageType.toLowerCase())
+                var imageType:String = null;
+                if (data.imageType != null) imageType = data.imageType;
+
+		switch (imageType.toLowerCase())
 		{
 			default:
 				loadGraphic(FileManager.getImageFile(data.imagePath), data.imageAnimated, data.imageDimensions[0], data.imageDimensions[1]);

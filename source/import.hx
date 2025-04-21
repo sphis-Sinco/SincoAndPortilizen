@@ -35,6 +35,8 @@ import sinlib.utilities.*;
 import sap.menus.*;
 import sap.modding.*;
 import sap.*;
+import sap.backends.*;
+import sap.backends.varients.*;
 
 using StringTools;
 

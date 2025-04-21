@@ -14,10 +14,12 @@ class TitleState extends State
 {
 	public static var SEQUENCE:TitleSequences = (Global.DEBUG_BUILD) ? DEBUG : INTRO;
 
+	public static var PLAY_MUSIC:Bool = false;
+
 	public static var BACKGROUND:SAPSprite;
 
 	public static var CHARACTER_RING:SAPSprite;
-        public static var CHARACTER_RING_CHARACTERS:SAPSprite;
+	public static var CHARACTER_RING_CHARACTERS:SAPSprite;
 
 	override public function new()
 	{
@@ -41,16 +43,17 @@ class TitleState extends State
 			position: [0, 0],
 			imagePath: 'titlescreen/CharacterRing'
 		});
-		add(CHARACTER_RING);
 		CHARACTER_RING.screenCenter(X);
 		CHARACTER_RING.y = -(CHARACTER_RING.height * 2);
 
-                CHARACTER_RING_CHARACTERS = new SAPSprite({
-                        position: [0,0],
-                        imagePath: 'titlescreen/CharacterRing-characters'
-                });
-                add(CHARACTER_RING_CHARACTERS);
-                CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
+		CHARACTER_RING_CHARACTERS = new SAPSprite({
+			position: [0, 0],
+			imagePath: 'titlescreen/CharacterRing-characters'
+		});
+		CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
+
+		add(CHARACTER_RING_CHARACTERS);
+		add(CHARACTER_RING);
 
 		if (SEQUENCE == INTRO || SEQUENCE == DEBUG)
 		{
@@ -63,11 +66,13 @@ class TitleState extends State
 					SEQUENCE = INTRO;
 				});
 		}
+		else
+			flashSequence(); // By doing this it makes sure that everything is initalized.
 	}
 
-	public static function introSequence():Void
+	private static function introSequence():Void
 	{
-                RetroCameraFade.fadeBlack(FlxG.camera, 12, 1);
+		RetroCameraFade.fadeBlack(FlxG.camera, 12, 1);
 
 		Global.playSoundEffect('start-synth');
 
@@ -75,16 +80,31 @@ class TitleState extends State
 			y: CHARACTER_RING.height + 16
 		}, 1.0, {
 			ease: FlxEase.sineOut,
+			startDelay: .4,
 			onComplete: function(tween)
 			{
 				SEQUENCE = FLASH;
+				flashSequence();
 			}
 		});
 	}
 
-        override function update(elapsed:Float) {
-                super.update(elapsed);
+	private static function flashSequence():Void
+	{
+		RetroCameraFade.fadeFromWhite(FlxG.camera, 12, 1);
 
-                CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
-        }
+		BACKGROUND.visible = true;
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
+
+		if (!PLAY_MUSIC)
+			PLAY_MUSIC = (SEQUENCE != DEBUG && SEQUENCE != INTRO);
+		else
+			Global.playMenuMusic();
+	}
 }

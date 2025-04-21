@@ -2,14 +2,14 @@ package;
 
 class Global
 {
-	public static var GENERATED_BY(get, set):String;
+	public static var GAME_WATERMARK(get, set):String;
 
-	static function get_GENERATED_BY():String
+	static function get_GAME_WATERMARK():String
 	{
 		return 'Sinco and Portilizen v${VERSION_FULL}';
 	}
 
-	static function set_GENERATED_BY(value:String):String
+	static function set_GAME_WATERMARK(value:String):String
 	{
 		return value;
 	}

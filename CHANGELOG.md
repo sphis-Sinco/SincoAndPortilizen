@@ -5,6 +5,7 @@ The game has been reprogrammed almost from the ground up
 ### Added
 - `SAPSprite` - Custom modified `FlxSprite` made for QOL.
 ### Changed
+- `GENERATED_BY` is now `GAME_WATERMARK`
 - `TitleStates` is now `TitleSequences` and now uses string values instead of integers
 - `State` now has a variable called `StateIdentifier` which should be initalized in `new()`
 - The company is now "SAPCrew" instead of "SAPTeam". This wipes saves, apologies.

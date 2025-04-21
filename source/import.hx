@@ -32,6 +32,9 @@ import openfl.system.System;
 import openfl.text.*;
 import sinlib.*;
 import sinlib.utilities.*;
+import sap.menus.*;
+import sap.modding.*;
+import sap.*;
 
 using StringTools;
 

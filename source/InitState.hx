@@ -16,14 +16,17 @@ class InitState extends FlxState
 			// Set the saveslot to a debug saveslot or a release saveslot
 			Global.change_saveslot((Global.DEBUG_BUILD) ? 'debug' : 'release');
 
-			#if DISCORDRPC
-			if (FlxG.save.data.settings.discord_rpc)
-				Discord.DiscordClient.initialize();
-			else
-				Discord.DiscordClient.shutdown();
-			#end
+			if (FlxG.save.data.settings != null)
+			{
+				FlxG.sound.volume = FlxG.save.data.settings.volume;
 
-			FlxG.sound.volume = FlxG.save.data.settings.volume;
+				#if DISCORDRPC
+				if (FlxG.save.data.settings.discord_rpc)
+					Discord.DiscordClient.initialize();
+				else
+					Discord.DiscordClient.shutdown();
+				#end
+			}
 
 			#if web
 			// pixel perfect render fix!
@@ -44,7 +47,6 @@ class InitState extends FlxState
 			FlxG.sound.volumeUpKeys = [];
 			FlxG.sound.volumeDownKeys = [];
 			FlxG.sound.muteKeys = [];
-			FileManager.FILE_MANAGER_VERSION_SUFFIX = '-SincoAndPortilizen';
 			#if EXCESS_TRACES
 			#if DISABLE_ANNOYING_ERRORS
 			trace('Disabled annoying errors');
@@ -53,7 +55,6 @@ class InitState extends FlxState
 			trace('Disabled annoying warnings');
 			#end
 			trace('Disabled volume keys');
-			trace('FILE_MANAGER_VERSION_SUFFIX: "${FileManager.FILE_MANAGER_VERSION_SUFFIX}"');
 			#end
 		});
 

@@ -21,39 +21,7 @@ These do things. Lmao!
 - `DO_NOT_RECOMPILE_ON_ASSET_UPDATE`: Disables `RECOMPILE_ON_ASSET_UPDATE`
 
 ## Start State Flags
-- `SKIP_TITLE`: Sends you to the Main Menu instantly instead of the Title Screen
-
-- `STAGE_ONE`: Sends you to the first stage
-- `STAGE_TWO`: Sends you to the second stage
-- `STAGE_FOUR`: Sends you to the fourth stage
-- `STAGE_FIVE`: Sends you to the fifth stage
-
-- `SIDEBIT_ONE`: Sends you to the first sidebit intro cutscene
-- `SIDEBIT_ONE_INSTANT`: Sends you to the first sidebit instantly
-
-- `EASY_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to easy
-- `HARD_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to hard
-- `EXTREME_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to extreme
-
-- `WORLDMAP`: Sends you to the worldmap as Sinco
-
-- `RESULTS`: Sends you to the results state as Sinco
-- `BAD_RANK` (executes with `RESULTS`): Sets the rank you will get to the bad rank
-- `GOOD_RANK` (executes with `RESULTS`): Sets the rank you will get to the good rank
-- `GREAT_RANK` (executes with `RESULTS`): Sets the rank you will get to the great rank
-- `EXCELLENT_RANK` (executes with `RESULTS`): Sets the rank you will get to the excellent rank
-- `PERFECT_RANK` (executes with `RESULTS`): Sets the rank you will get to the perfect rank
-- `PORT_RANK_CHAR` (executes with `RESULTS`): Sends you to the results state as Portilizen
-
-- `GIF_PORT_GAMEOVER`: Sends you to the experimental `PaulPortGameOver` state
-
-- `SIDEBIT1_INTRO_CUTSCENE`: Sends you to the `Sidebit1IntroCutscene` state
-- `FLXANIMATE_TESTING`: Sends you to the `Sidebit1IntroCutsceneAtlas` state
-
-- `SIDEBIT_MENU`: Sends you to the `SidebitSelect` state
+TBA
 
 ## Language Flags
 - `CNGLA_TRACES`: Allows the console to print out what localized assets it could not get
-- `FORCED_ENGLISH_LANGUAGE`: Forces your language to English
-- `SPANISH_LANGUAGE`: Sets your language to (Google-translated) Spanish
-- `PORTUGUESE_LANGUAGE`: Sets your language to Portuguese

@@ -90,7 +90,7 @@ class InitState extends FlxState
 	public static function proceed():Void
 	{
 		trace('Starting game regularly');
-		// Global.switchState(new TitleState());
+		Global.switchState(new sap.menus.TitleState());
 	}
 
 	public static function switchToState(state:FlxState, stateName:String):Void

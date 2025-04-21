@@ -113,7 +113,7 @@ class TitleState extends State
 			flashSequence(); // By doing this it makes sure that everything is initalized.
 	}
 
-	private static function introSequence():Void
+	function introSequence():Void
 	{
 		RetroCameraFade.fadeBlack(FlxG.camera, 12, 1);
 
@@ -132,7 +132,7 @@ class TitleState extends State
 		});
 	}
 
-	private static function flashSequence():Void
+	function flashSequence():Void
 	{
 		RetroCameraFade.fadeFromWhite(FlxG.camera, 12, 1);
 
@@ -142,7 +142,7 @@ class TitleState extends State
 		SEQUENCE = COMPLETE;
 	}
 
-	private static function completeSequence():Void
+	function completeSequence():Void
 	{
 		randomBGChar(SINCO, 6);
 		randomBGChar(PORTILIZEN, 4);
@@ -163,7 +163,12 @@ class TitleState extends State
 			completeSequence();
 	}
 
-	private static function randomBGChar(char:FlxSprite, chance:Float):Void
+	/**
+	 * Takes a FlxSprite and moves it from the left side of the screen to the right with a random chance of it happening.
+	 * @param char FlxSprite you would like to move
+	 * @param chance The chances in which your FlxSprite will spawn and start moving
+	 */
+	public static function randomBGChar(char:FlxSprite, chance:Float):Void
 	{
 		if (FlxG.random.bool(chance) && !char.visible)
 		{

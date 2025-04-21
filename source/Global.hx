@@ -2,6 +2,9 @@ package;
 
 class Global
 {
+	/**
+	 * A text string with the game name and version
+	 */
 	public static var GAME_WATERMARK(get, set):String;
 
 	static function get_GAME_WATERMARK():String
@@ -14,8 +17,14 @@ class Global
 		return value;
 	}
 
+	/**
+	 * A simplified text string with the game version
+	 */
 	public static var VERSION(get, never):String;
 
+	/**
+	 * A more complicated text string with the game version with suffixes.
+	 */
 	public static var VERSION_FULL(get, never):String;
 
 	static function get_VERSION():String
@@ -236,44 +245,72 @@ class Global
 		return returnPhrase;
 	}
 
-	public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>):Void
-	{
-	}
+	/**
+	 * This calls script functions with the same name
+	 * @param func Function name
+	 * @param arguments Function argument(s)
+	 */
+	public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>):Void {}
 
-	public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true):Void
-	{
-	}
+	/**
+	 * This sets script variables
+	 * @param name script name
+	 * @param value script value
+	 * @param allowOverride if this variable should be changeable. Defaults to `true`
+	 */
+	public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true):Void {}
 
+	/**
+	 * Changes the state with extra code inbetween (eventually)
+	 */
 	public static function switchState(new_state:FlxState):Void
 	{
 		FlxG.switchState(() -> new_state);
 	}
 
+	/**
+	 * Checks if any key in an array of keys is pressed
+	 */
 	public static function anyKeysPressed(keys:Array<FlxKey>):Bool
 	{
 		return FlxG.keys.anyPressed(keys);
 	}
 
+	/**
+	 * Checks if a key is pressed
+	 */
 	public static function keyPressed(key:FlxKey):Bool
 	{
 		return anyKeysPressed([key]);
 	}
 
+	/**
+	 * Checks if any key in an array of keys was just released
+	 */
 	public static function anyKeysJustReleased(keys:Array<FlxKey>):Bool
 	{
 		return FlxG.keys.anyJustReleased(keys);
 	}
 
+	/**
+	 * Checks if a key was just released
+	 */
 	public static function keyJustReleased(key:FlxKey):Bool
 	{
 		return anyKeysJustReleased([key]);
 	}
 
+	/**
+	 * Checks if any key in an array of keys was just pressed
+	 */
 	public static function anyKeysJustPressed(keys:Array<FlxKey>):Bool
 	{
 		return FlxG.keys.anyJustPressed(keys);
 	}
 
+	/**
+	 * Checks if a key was just pressed
+	 */
 	public static function keyJustPressed(key:FlxKey):Bool
 	{
 		return anyKeysJustPressed([key]);

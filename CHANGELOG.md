@@ -3,6 +3,7 @@
 The game has been reprogrammed almost from the ground up
 
 ### Added
+- More code documentation
 - `SAPSprite` - Custom modified `FlxSprite` made for QOL.
 ### Changed
 - `GENERATED_BY` is now `GAME_WATERMARK`

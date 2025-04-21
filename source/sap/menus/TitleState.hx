@@ -14,6 +14,7 @@ class TitleState extends State
                         imagePath: 'titlescreen/TitleBG'
                 });
                 add(backdrop);
+                backdrop.screenCenter();
         }
         
 }

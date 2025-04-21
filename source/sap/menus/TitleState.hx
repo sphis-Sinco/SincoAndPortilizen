@@ -11,7 +11,8 @@ class TitleState extends State
 
                 var backdrop:SAPSprite = new SAPSprite({
                         position: [0,0],
-                        imagePath: 'titlescreen/TitleBG'
+                        imagePath: 'titlescreen/TitleBG',
+                        scaleAddition: 1
                 });
                 add(backdrop);
                 backdrop.screenCenter();

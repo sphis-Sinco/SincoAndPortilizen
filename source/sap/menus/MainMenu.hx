@@ -11,21 +11,24 @@ class MainMenu extends State
 	{
 		super.create();
 
-                var bg:SAPSprite = new SAPSprite({
-                        position: [0,0],
-                        spriteType: 'image',
-                        imagePath: 'mainmenu/MainMenuGrid'
-                });
-                bg.screenCenter();
-                add(bg);
+		var bg:SAPSprite = new SAPSprite({
+			position: [0, 0],
+			spriteType: 'image',
+			imagePath: 'mainmenu/MainMenuGrid'
+		});
+		bg.screenCenter();
+		add(bg);
 
 		var centerBox:SAPSprite = new SAPSprite({
 			position: [0, 0],
-                        spriteType: 'graphic',
-                        graphicDimensions: [64,64],
-                        graphicColor: FlxColor.BLACK
+			spriteType: 'graphic',
+			graphicDimensions: [
+				64 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER,
+				64 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER
+			],
+			graphicColor: FlxColor.BLACK
 		});
-                centerBox.screenCenter();
+		centerBox.screenCenter();
 		add(centerBox);
 	}
 

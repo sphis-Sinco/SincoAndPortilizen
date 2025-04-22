@@ -27,7 +27,7 @@ class Locale
 
 			if (localeName == null)
 			{
-				Log.info('The "$language" locale does not have the "internalname" field.');
+				Log.warn('The "$language" locale does not have the "internalname" field.');
 
 				localeName = language;
 			}
@@ -38,6 +38,10 @@ class Locale
 				FileManager.LOCALIZED_ASSET_SUFFIX = '';
 			else
 				FileManager.LOCALIZED_ASSET_SUFFIX = localeAssetSuffix;
+
+                        #if EXCESS_TRACES
+                        Log.haxeTrace(Reflect.fields(languageJson));
+                        #end
 		}
 	}
 

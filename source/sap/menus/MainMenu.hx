@@ -11,6 +11,14 @@ class MainMenu extends State
 	{
 		super.create();
 
+                var bg:SAPSprite = new SAPSprite({
+                        position: [0,0],
+                        spriteType: 'image',
+                        imagePath: 'mainmenu/MainMenuGrid'
+                });
+                bg.screenCenter();
+                add(bg);
+
 		var centerBox:SAPSprite = new SAPSprite({
 			position: [0, 0],
                         spriteType: 'graphic',

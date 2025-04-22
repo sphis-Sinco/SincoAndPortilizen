@@ -39,6 +39,7 @@ class TitleState extends State
 
 		BACKGROUND = new SAPSprite({
 			position: [0, 0],
+			spriteType: 'image',
 			imagePath: 'titlescreen/TitleBG',
 			scaleAddition: 1
 		});
@@ -48,6 +49,7 @@ class TitleState extends State
 
 		CHARACTER_RING = new SAPSprite({
 			position: [0, 0],
+			spriteType: 'image',
 			imagePath: 'titlescreen/CharacterRing'
 		});
 		CHARACTER_RING.screenCenter(X);
@@ -55,6 +57,7 @@ class TitleState extends State
 
 		CHARACTER_RING_CHARACTERS = new SAPSprite({
 			position: [0, 0],
+			spriteType: 'image',
 			imagePath: 'titlescreen/CharacterRing-characters'
 		});
 		CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
@@ -64,6 +67,7 @@ class TitleState extends State
 
 		SINCO = new SAPSprite({
 			position: [0, 0],
+			spriteType: 'image',
 			imagePath: 'titlescreen/TitleSinco',
 			imageAnimated: true,
 			imageDimensions: [8, 8],
@@ -71,6 +75,7 @@ class TitleState extends State
 		});
 		PORTILIZEN = new SAPSprite({
 			position: [0, 0],
+			spriteType: 'image',
 			imagePath: 'titlescreen/TitlePort',
 			imageAnimated: true,
 			imageDimensions: [8, 8],
@@ -87,6 +92,7 @@ class TitleState extends State
 
 		PRESS_ANY = new SAPSprite({
 			position: [0, FlxG.height - (16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER)],
+			spriteType: 'image',
 			imagePath: 'titlescreen/PressAnyToPlay'
 		});
 		PRESS_ANY.screenCenter(X);
@@ -96,7 +102,7 @@ class TitleState extends State
 		VERSION_TEXT = new FlxText(10, 10, 0, Global.GAME_WATERMARK, 12);
 		VERSION_TEXT.color = 0x000000;
 		add(VERSION_TEXT);
-                VERSION_TEXT.visible = false;
+		VERSION_TEXT.visible = false;
 
 		if (SEQUENCE == INTRO || SEQUENCE == DEBUG)
 		{
@@ -136,8 +142,8 @@ class TitleState extends State
 	{
 		RetroCameraFade.fadeFromWhite(FlxG.camera, 12, 1);
 
-                // :)
-                VERSION_TEXT.visible = PRESS_ANY.visible = BACKGROUND.visible = true;
+		// :)
+		VERSION_TEXT.visible = PRESS_ANY.visible = BACKGROUND.visible = true;
 
 		SEQUENCE = COMPLETE;
 	}
@@ -147,7 +153,8 @@ class TitleState extends State
 		randomBGChar(SINCO, 6);
 		randomBGChar(PORTILIZEN, 4);
 
-                if (Global.keyJustReleased(ENTER)) Global.switchState(new MainMenu());
+		if (Global.keyJustReleased(ENTER))
+			Global.switchState(new MainMenu());
 	}
 
 	override function update(elapsed:Float)

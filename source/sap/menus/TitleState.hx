@@ -158,7 +158,7 @@ class TitleState extends State
 		randomBGChar(SINCO, 6);
 		randomBGChar(PORTILIZEN, 4);
 
-		if (Global.keyJustReleased(ENTER))
+		if (Global.keyJustReleased(ANY))
 			Global.switchState(new MainMenu());
 	}
 

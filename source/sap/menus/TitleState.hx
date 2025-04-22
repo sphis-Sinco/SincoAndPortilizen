@@ -146,6 +146,7 @@ class TitleState extends State
 			if (FlxG.camera.filters != null)
 				FlxG.camera.filters = null;
 		}, 12);
+                
 		// :)
 		VERSION_TEXT.visible = PRESS_ANY.visible = BACKGROUND.visible = true;
 

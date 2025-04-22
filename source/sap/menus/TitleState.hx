@@ -184,20 +184,20 @@ class TitleState extends State
 	 */
 	public static function randomBGChar(char:FlxSprite, chance:Float):Void
 	{
-		if (FlxG.random.bool(chance) && !char.visible)
-		{
-			char.visible = true;
-			char.y = FlxG.height - (32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
-			char.x = -(char.width * 2);
-			FlxTween.tween(char, {x: FlxG.width + (char.width * 2)}, 2, {
-				onComplete: function(tween)
+		if (!FlxG.random.bool(chance) || char.visible)
+			return;
+                
+		char.visible = true;
+		char.y = FlxG.height - (32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		char.x = -(char.width * 2);
+		FlxTween.tween(char, {x: FlxG.width + (char.width * 2)}, 2, {
+			onComplete: function(tween)
+			{
+				FlxTimer.wait(FlxG.random.float(1, 4), () ->
 				{
-					FlxTimer.wait(FlxG.random.float(1, 4), () ->
-					{
-						char.visible = false;
-					});
-				}
-			});
-		}
+					char.visible = false;
+				});
+			}
+		});
 	}
 }

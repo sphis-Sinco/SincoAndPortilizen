@@ -9,6 +9,7 @@ typedef SAPSpriteData =
 	// Graphics
 	var ?graphicDimensions:Array<Int>;
 	var ?graphicColor:FlxColor;
+	var ?graphicDISMScale:Bool;
 
 	// Images
 	var ?imageType:String;
@@ -41,6 +42,8 @@ class SAPSprite extends FlxSprite
 				thedata.graphicColor ??= FlxColor.WHITE;
 
 				generateGraphicSprite(thedata);
+				if (data.graphicDISMScale)
+					Global.scaleSprite(this, thedata.scaleAddition ??= 0);
 			case 'image':
 				thedata.imagePath ??= 'blankBG';
 				thedata.imageType ??= 'pixel-spritesheet';

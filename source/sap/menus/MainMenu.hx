@@ -22,11 +22,9 @@ class MainMenu extends State
 		var centerBox:SAPSprite = new SAPSprite({
 			position: [0, 0],
 			spriteType: 'graphic',
-			graphicDimensions: [
-				64 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER,
-				64 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER
-			],
-			graphicColor: FlxColor.BLACK
+			graphicDimensions: [64, 64],
+			graphicColor: FlxColor.BLACK,
+                        graphicDISMScale: true
 		});
 		centerBox.screenCenter();
 		add(centerBox);

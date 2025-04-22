@@ -147,7 +147,7 @@ class TitleState extends State
 		randomBGChar(SINCO, 6);
 		randomBGChar(PORTILIZEN, 4);
 
-                if (Global.keyJustReleased(ENTER)) trace('Next menu');
+                if (Global.keyJustReleased(ENTER)) Global.switchState(new Worldmap());
 	}
 
 	override function update(elapsed:Float)

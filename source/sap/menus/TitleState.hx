@@ -141,7 +141,11 @@ class TitleState extends State
 	function flashSequence():Void
 	{
 		RetroCameraFade.fadeFromWhite(FlxG.camera, 12, 1);
-
+		new FlxTimer().start(1.1, function(tween)
+		{
+			if (FlxG.camera.filters != null)
+				FlxG.camera.filters = null;
+		}, 12);
 		// :)
 		VERSION_TEXT.visible = PRESS_ANY.visible = BACKGROUND.visible = true;
 

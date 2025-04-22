@@ -115,6 +115,7 @@ class InitState extends FlxState
 		Timer.measure(function()
 		{
 			trace('language init');
+                        Global.LOCALE.initalizeLocale('english');
 		});
 	}
 }

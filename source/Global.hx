@@ -1,7 +1,16 @@
 package;
 
+import sap.global.Locale;
+
 class Global
 {
+	// QUALITY OF LIFE \\
+
+	/**
+	 * A class with locale management
+	 */
+	public static var LOCALE:Locale;
+
 	/**
 	 * A text string with the game name and version
 	 */
@@ -70,32 +79,6 @@ class Global
 	 * The default image scale multiplier for the pixel art sprites
 	 */
 	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Int = 4;
-
-	/**
-	 * The suffix for the save slot
-	 */
-	public static var SAVE_SLOT:Dynamic = 1;
-
-	/**
-	 * The prefix for the save slot
-	 */
-	public static var SAVE_SLOT_PREFIX:String = 'SINCOandPORT-SLOT';
-
-	/**
-	 * This switches the save slot using `SAVE_SLOT_PREFIX` and `slotsuffix`
-	 * @param slotsuffix this is the save slot suffix, for example if you do `1` it will be `SAVE_SLOT_PREFIX`-1
-	 */
-	public static function change_saveslot(slotsuffix:Dynamic = 1):Void
-	{
-		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
-		FlxG.save.bind(SAVE_SLOT, Application.COMPANY);
-
-		// SaveManager.setupSave();
-		trace('Switched save slot to "$SAVE_SLOT"');
-
-		trace('Save dump: ${FlxG.save.data}');
-		FlxG.save.flush();
-	}
 
 	/**
 	 * Automatically scales a sprite using `DEFAULT_IMAGE_SCALE_MULTIPLIER`
@@ -228,39 +211,6 @@ class Global
 	}
 
 	/**
-	 * Returns a key value from `LocalizationManager.TEXT_CONTENT`
-	 * @param phrase the key you are trying to read
-	 * @return String
-	 */
-	public static function getLocalizedPhrase(phrase:String, ?fallback:String):String
-	{
-		var phrase_that_works:String = phrase.toLowerCase().replace(' ', '-');
-
-		var returnPhrase:String = null; // LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
-		if (returnPhrase == null)
-		{
-			returnPhrase = (fallback == null) ? phrase_that_works : fallback;
-		}
-
-		return returnPhrase;
-	}
-
-	/**
-	 * This calls script functions with the same name
-	 * @param func Function name
-	 * @param arguments Function argument(s)
-	 */
-	public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>):Void {}
-
-	/**
-	 * This sets script variables
-	 * @param name script name
-	 * @param value script value
-	 * @param allowOverride if this variable should be changeable. Defaults to `true`
-	 */
-	public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true):Void {}
-
-	/**
 	 * Changes the state with extra code inbetween (eventually)
 	 */
 	public static function switchState(new_state:FlxState):Void
@@ -315,4 +265,49 @@ class Global
 	{
 		return anyKeysJustPressed([key]);
 	}
+
+	// SAVE DATA \\
+
+	/**
+	 * The suffix for the save slot
+	 */
+	public static var SAVE_SLOT:Dynamic = 1;
+
+	/**
+	 * The prefix for the save slot
+	 */
+	public static var SAVE_SLOT_PREFIX:String = 'SINCOandPORT-SLOT';
+
+	/**
+	 * This switches the save slot using `SAVE_SLOT_PREFIX` and `slotsuffix`
+	 * @param slotsuffix this is the save slot suffix, for example if you do `1` it will be `SAVE_SLOT_PREFIX`-1
+	 */
+	public static function change_saveslot(slotsuffix:Dynamic = 1):Void
+	{
+		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
+		FlxG.save.bind(SAVE_SLOT, Application.COMPANY);
+
+		/** SaveManager.setupSave(); **/
+		trace('Switched save slot to "$SAVE_SLOT"');
+
+		trace('Save dump: ${FlxG.save.data}');
+		FlxG.save.flush();
+	}
+
+	// MODDING \\
+
+	/**
+	 * This calls script functions with the same name
+	 * @param func Function name
+	 * @param arguments Function argument(s)
+	 */
+	public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>):Void {}
+
+	/**
+	 * This sets script variables
+	 * @param name script name
+	 * @param value script value
+	 * @param allowOverride if this variable should be changeable. Defaults to `true`
+	 */
+	public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true):Void {}
 }

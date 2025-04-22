@@ -1,0 +1,10 @@
+{
+        "internal-name": "english",
+        "asset-path": "",
+
+        "mainmenu.play": "play",
+        "mainmenu.credits": "credits",
+        "mainmenu.settings": "settings",
+        "mainmenu.traces": "traces",
+        "mainmenu.exit": "exit"
+}

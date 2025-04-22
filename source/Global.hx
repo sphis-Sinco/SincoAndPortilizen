@@ -49,7 +49,7 @@ class Global
 		}
 		#if PLAYTESTER_BUILD version += '-playtest'; #end
 
-		#if EXCESS_TRACES trace('Version: ${version}'); #end
+		#if EXCESS_TRACES Log.info('Version: ${version}'); #end
 
 		return '${version}';
 	}
@@ -126,13 +126,13 @@ class Global
 		{
 			if (!FlxG.sound.music.playing)
 			{
-				#if EXCESS_TRACES trace(tracelog); #end
+				#if EXCESS_TRACES Log.info(tracelog); #end
 				FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
 			}
 		}
 		else
 		{
-			#if EXCESS_TRACES trace(tracelog); #end
+			#if EXCESS_TRACES Log.info(tracelog); #end
 			FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
 		}
 	}
@@ -145,7 +145,7 @@ class Global
 	{
 		#if EXCESS_TRACES
 		final file:Array<String> = name.split('/');
-		trace('Trying to play sound effect: "${file[file.length - 1]}" | ${posInfoString(posinfo)}');
+		Log.info('Trying to play sound effect: "${file[file.length - 1]}" | ${posInfoString(posinfo)}');
 		#end
 
 		FlxG.sound.play(FileManager.getSoundFile('sounds/$name', PATH_TYPE));
@@ -170,7 +170,7 @@ class Global
 		#if html5
 		if (!WebSave.LEVELS_COMPLETE.contains(lvl))
 		{
-			trace(newLvlTrace);
+			Log.info(newLvlTrace);
 			WebSave.LEVELS_COMPLETE.push(lvl);
 		}
 
@@ -179,7 +179,7 @@ class Global
 
 		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
 		{
-			trace(newLvlTrace);
+			Log.info(newLvlTrace);
 			FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 		}
 	}
@@ -194,7 +194,7 @@ class Global
 		#if !DISCORDRPC
 		return;
 		#else
-		trace('Discord presence is being changed (details: ${details}, state: ${state}) | ${posInfoString(posinfo)}');
+		Log.info('Discord presence is being changed (details: ${details}, state: ${state}) | ${posInfoString(posinfo)}');
 		DiscordClient.changePresence(details, state);
 		#end
 	}
@@ -286,9 +286,9 @@ class Global
 		FlxG.save.bind(SAVE_SLOT, Application.COMPANY);
 
 		/** SaveManager.setupSave(); **/
-		trace('Switched save slot to "$SAVE_SLOT"');
+		Log.info('Switched save slot to "$SAVE_SLOT"');
 
-		trace('Save dump: ${FlxG.save.data}');
+		Log.info('Save dump: ${FlxG.save.data}');
 		FlxG.save.flush();
 	}
 

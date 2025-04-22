@@ -31,11 +31,11 @@ class CrashHandler
 	 */
 	public static function initialize():Void
 	{
-		trace('[LOG] Enabling standard uncaught error handler...');
+		Log.haxeTrace('Enabling standard uncaught error handler...');
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
 
 		#if cpp
-		trace('[LOG] Enabling C++ critical error handler...');
+		Log.haxeTrace('Enabling C++ critical error handler...');
 		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
 		#end
 	}
@@ -59,7 +59,7 @@ class CrashHandler
 		}
 		catch (e:Dynamic)
 		{
-			trace('Error while handling crash: ' + e);
+			Log.error('Error while handling crash: ' + e);
 		}
 
 		#if sys
@@ -83,9 +83,9 @@ class CrashHandler
 		}
 		catch (e:Dynamic)
 		{
-			trace('Error while handling crash: $e');
+			Log.error('Error while handling crash: $e');
 
-			trace('Message: $message');
+			Log.info('Message: $message');
 		}
 
 		#if sys
@@ -159,7 +159,7 @@ class CrashHandler
 
 		fullContents += message;
 
-		trace(message);
+		Log.error(message);
 
 		fullContents += '\n';
 
@@ -221,7 +221,7 @@ class CrashHandler
 	{
 		@:privateAccess
 		var currentStatus = Lib.current.stage.__uncaughtErrorEvents.__enabled;
-		trace('ERROR HANDLER STATUS: ' + currentStatus);
+		Log.haxeTrace('ERROR HANDLER STATUS: ' + currentStatus);
 
 		#if openfl_disable_handle_error
 		final disable_handle:Bool = true;
@@ -235,8 +235,8 @@ class CrashHandler
 		final enable_handle:Bool = false;
 		#end
 
-		trace('Define: openfl_enable_handle_error is ${enable_handle}');
-		trace('Define: openfl_disable_handle_error is ${disable_handle}');
+		Log.haxeTrace('Define: openfl_enable_handle_error is ${enable_handle}');
+		Log.haxeTrace('Define: openfl_disable_handle_error is ${disable_handle}');
 	}
 
 	public static function induceBasicCrash():Void

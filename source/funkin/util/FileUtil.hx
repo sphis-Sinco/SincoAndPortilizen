@@ -59,7 +59,7 @@ class FileUtil
 		#if sys
 		return File.getContent(path);
 		#else
-		trace('ERROR: readStringFromPath not implemented for this platform');
+		Log.error('readStringFromPath not implemented for this platform');
 		return null;
 		#end
 	}
@@ -103,11 +103,11 @@ class FileUtil
 		file.addEventListener(Event.SELECT, function(e)
 		{
 			var selectedFileRef:FileReference = e.target;
-			trace('Selected file: ' + selectedFileRef.name);
+			Log.haxeTrace('Selected file: ' + selectedFileRef.name);
 			selectedFileRef.addEventListener(Event.COMPLETE, function(e)
 			{
 				var loadedFileRef:FileReference = e.target;
-				trace('Loaded file: ' + loadedFileRef.name);
+				Log.haxeTrace('Loaded file: ' + loadedFileRef.name);
 				callback(loadedFileRef);
 			});
 			selectedFileRef.load();
@@ -123,15 +123,15 @@ class FileUtil
 		var file = new FileReference();
 		file.addEventListener(Event.COMPLETE, function(e:Event)
 		{
-			trace('Successfully wrote file.');
+			Log.haxeTrace('Successfully wrote file.');
 		});
 		file.addEventListener(Event.CANCEL, function(e:Event)
 		{
-			trace('Cancelled writing file.');
+			Log.haxeTrace('Cancelled writing file.');
 		});
 		file.addEventListener(IOErrorEvent.IO_ERROR, function(e:IOErrorEvent)
 		{
-			trace('IO error writing file.');
+			Log.error('IO error writing file.');
 		});
 		file.save(data, path);
 	}
@@ -312,8 +312,8 @@ class FileUtil
 
 	public static function readZIPFromBytes(input:Bytes):Array<Entry>
 	{
-		trace('TEST: ' + input.length);
-		trace(input.sub(0, 30).toHex());
+		Log.haxeTrace('TEST: ' + input.length);
+		Log.haxeTrace(input.sub(0, 30).toHex());
 		var bytesInput = new haxe.io.BytesInput(input);
 		var zippedEntries = haxe.zip.Reader.readZip(bytesInput);
 		var results:Array<Entry> = [];

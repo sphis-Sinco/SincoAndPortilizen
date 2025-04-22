@@ -59,7 +59,7 @@ class ScreenshotPlugin extends FlxBasic
 
 	public function onStateSwitchComplete():Void
 	{
-		// trace('Stage switch complete! Removing screenshot preview sprite if it exists.');
+		// Log.haxeTrace('Stage switch complete! Removing screenshot preview sprite if it exists.');
 		FlxG.stage.removeChild(previewSprite);
 		previewSprite = null;
 	}
@@ -306,12 +306,12 @@ class ScreenshotPlugin extends FlxBasic
 
 		if (pngData == null)
 		{
-			trace('[WARN] Failed to encode PNG data.');
+			Log.warn('Failed to encode PNG data.');
 			return;
 		}
 		else
 		{
-			trace('Saving screenshot to: ' + targetPath);
+			Log.haxeTrace('Saving screenshot to: ' + targetPath);
 			// TODO: Make this work on browser.
 			FileUtil.writeBytesToPath(targetPath, pngData);
 		}

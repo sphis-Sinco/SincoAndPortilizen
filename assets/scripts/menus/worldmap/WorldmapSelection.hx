@@ -9,7 +9,7 @@ function worldmapSelection(character:String, selection:Int, sidebitMode:Bool)
 {
 	final difficulty:String = Worldmap.CURRENT_DIFFICULTY;
 
-	trace(character + ' ' + ((sidebitMode) ? 'sidebit' : 'level') + ' ' + selection);
+	Log.haxeTrace(character + ' ' + ((sidebitMode) ? 'sidebit' : 'level') + ' ' + selection);
 
 	switch (character.toLowerCase())
 	{
@@ -29,6 +29,6 @@ function worldmapSelection(character:String, selection:Int, sidebitMode:Bool)
 				Global.switchState(new Stage2(difficulty));
 
 		default:
-			trace(character + ' has no implementation');
+			Log.warn(character + ' has no implementation');
 	}
 }

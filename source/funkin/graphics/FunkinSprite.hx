@@ -106,12 +106,12 @@ class FunkinSprite extends FlxSprite
 			fadeTween = FlxTween.tween(this, {alpha: 0}, 0.25);
 		}
 
-		trace('[ASYNC] Start loading image (${key})');
+		Log.haxeTrace('[ASYNC] Start loading image (${key})');
 		graphic.persist = true;
 		openfl.Assets.loadBitmapData(key)
 			.onComplete(function(bitmapData:openfl.display.BitmapData)
 			{
-				trace('[ASYNC] Finished loading image');
+				Log.haxeTrace('[ASYNC] Finished loading image');
 				var cache:Bool = false;
 				loadBitmapData(bitmapData, cache);
 
@@ -123,7 +123,7 @@ class FunkinSprite extends FlxSprite
 			})
 			.onError(function(error:Dynamic)
 			{
-				trace('[ASYNC] Failed to load image: ${error}');
+				Log.error('[ASYNC] Failed to load image: ${error}');
 				if (fadeTween != null)
 				{
 					fadeTween.cancel();
@@ -132,7 +132,7 @@ class FunkinSprite extends FlxSprite
 			})
 			.onProgress(function(progress:Int, total:Int)
 			{
-				trace('[ASYNC] Loading image progress: ${progress}/${total}');
+				Log.haxeTrace('[ASYNC] Loading image progress: ${progress}/${total}');
 			});
 	}
 
@@ -238,7 +238,7 @@ class FunkinSprite extends FlxSprite
 		}
 		else
 		{
-			trace('Successfully cached graphic: $key');
+			Log.haxeTrace('Successfully cached graphic: $key');
 			graphic.persist = true;
 			currentCachedTextures.set(key, graphic);
 		}

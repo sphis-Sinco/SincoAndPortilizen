@@ -15,14 +15,14 @@ class DiscordClient
 
 	public function new():Void
 	{
-		trace("Discord Client starting...");
+		Log.info("Discord Client starting...");
 		DiscordRpc.start({
 			clientID: CLIENT_ID,
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
 		});
-		trace("Discord Client started.");
+		Log.info("Discord Client started.");
 
 		while (true)
 		{
@@ -35,7 +35,7 @@ class DiscordClient
 
 	public static function shutdown():Void
 	{
-		trace('Shutting down...');
+		Log.info('Shutting down...');
 		DiscordRpc.shutdown();
 	}
 
@@ -51,12 +51,12 @@ class DiscordClient
 
 	static function onError(_code:Int, _message:String):Void
 	{
-		trace('Error! $_code : $_message');
+		Log.error('Error! $_code : $_message');
 	}
 
 	static function onDisconnected(_code:Int, _message:String):Void
 	{
-		trace('Disconnected! $_code : $_message');
+		Log.warn('Disconnected! $_code : $_message');
 	}
 
 	public static function initialize():Void
@@ -65,7 +65,7 @@ class DiscordClient
 		{
 			new DiscordClient();
 		});
-		trace("Discord Client initialized");
+		Log.info("Discord Client initialized");
 	}
 
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float):Void

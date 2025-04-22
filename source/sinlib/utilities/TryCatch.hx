@@ -24,7 +24,7 @@ class TryCatch
 			try
 			{
 				if (paramaters.traceErr)
-					trace(e);
+					Log.error(e);
 			}
 			catch (e)
 			{/** This is purely incase you do `tryCatch(funcHere);` **/}

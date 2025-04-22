@@ -158,7 +158,7 @@ class Iris
 		Sys.println((posPrefix + ": " + out).stripColor());
 		#else
 		// Since non-sys targets lack printLn, a simple trace should work
-		trace((posPrefix + ": " + out).stripColor());
+		Log.haxeTrace((posPrefix + ": " + out).stripColor());
 		#end
 	}
 
@@ -240,7 +240,7 @@ class Iris
 	 * Instantiates a new Script with the string value.
 	 *
 	 * ```haxe
-	 * trace("Hello World!");
+	 * Log.haxeTrace("Hello World!");
 	 * ```
 	 *
 	 * will trace "Hello World!" to the standard output.
@@ -329,7 +329,7 @@ class Iris
 		set("trace", Reflect.makeVarArgs(function(x:Array<Dynamic>)
 		{
 			var pos = this.interp != null ? this.interp.posInfos() : Iris.getDefaultPos(this.name);
-			// trace(pos);
+			// Log.haxeTrace(pos);
 
 			var v = x.shift();
 			if (x.length > 0)
@@ -382,7 +382,7 @@ class Iris
 		if (interp == null)
 		{
 			#if IRIS_DEBUG
-			trace("[Iris:call()]: " + interpErrStr + ", so functions cannot be called.");
+			Log.info("[Iris:call()]: " + interpErrStr + ", so functions cannot be called.");
 			#end
 			return null;
 		}
@@ -425,7 +425,7 @@ class Iris
 	{
 		#if IRIS_DEBUG
 		if (interp == null)
-			trace("[Iris:exists()]: " + interpErrStr + ", returning false...");
+			Log.warn("[Iris:exists()]: " + interpErrStr + ", returning false...");
 		#end
 		return (interp != null) ? interp.variables.exists(field) : false;
 	}

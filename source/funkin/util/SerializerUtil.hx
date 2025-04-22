@@ -39,8 +39,8 @@ class SerializerUtil
 		}
 		catch (e)
 		{
-			trace('An error occurred while parsing JSON from string data');
-			trace(e);
+			Log.info('An error occurred while parsing JSON from string data');
+			Log.error(e);
 			return null;
 		}
 	}
@@ -56,8 +56,8 @@ class SerializerUtil
 		}
 		catch (e:Dynamic)
 		{
-			trace('An error occurred while parsing JSON from byte data');
-			trace(e);
+			Log.info('An error occurred while parsing JSON from byte data');
+			Log.error(e);
 			return null;
 		}
 	}

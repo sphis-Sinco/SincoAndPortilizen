@@ -1,4 +1,4 @@
 function initalizeMod()
 {
-        trace('Hello world!');
+        Log.haxeTrace('Hello world!');
 }

@@ -64,7 +64,7 @@ class FileManager
 			{
 				if (!UNLOCALIZED_ASSETS.contains(localizedreturnpath))
 				{
-					#if CNGLA_TRACES trace('Could not get localized asset: $localizedreturnpath'); #end
+					#if CNGLA_TRACES Log.warn('Could not get localized asset: $localizedreturnpath'); #end
 					UNLOCALIZED_ASSETS.push(localizedreturnpath);
 				}
 			}
@@ -73,7 +73,7 @@ class FileManager
 
 		if (exists(returnpath))
 		{
-			#if EXCESS_TRACES trace('Existing asset return path: ${returnpath}'); #end
+			#if EXCESS_TRACES Log.haxeTrace('Existing asset return path: ${returnpath}'); #end
 			return returnpath;
 		}
 
@@ -88,12 +88,12 @@ class FileManager
 			if (asset.contains('mods/'))
 			{
 				#if EXCESS_TRACES
-				trace('Could not get asset: $asset'); // , posinfo);
+				Log.warn('Could not get asset: $asset'); // , posinfo);
 				#end
 			}
 			else
 			{
-				trace('Could not get asset: $asset'); // , posinfo);
+				Log.warn('Could not get asset: $asset'); // , posinfo);
 			}
 			UNFOUND_ASSETS.push(asset);
 		}
@@ -164,7 +164,7 @@ class FileManager
 		var readFileFolder:Dynamic = function(folder:String, ogdir:String)
 		{
 			#if EXCESS_TRACES
-			trace('${ogdir}${folder}');
+			Log.haxeTrace('${ogdir}${folder}');
 			#end
 
 			for (file in readDirectory('${ogdir}${folder}'))
@@ -193,7 +193,7 @@ class FileManager
 		readFolder = function(folder:String, ogdir:String)
 		{
 			#if EXCESS_TRACES
-			trace('reading ${ogdir}${folder}');
+			Log.haxeTrace('reading ${ogdir}${folder}');
 			#end
 
 			TryCatch.tryCatch(function()
@@ -213,7 +213,7 @@ class FileManager
 		var readDir:Dynamic = function(directory:String)
 		{
 			#if EXCESS_TRACES
-			trace('reading ${directory}');
+			Log.haxeTrace('reading ${directory}');
 			#end
 			for (folder in FileSystem.readDirectory(directory))
 			{
@@ -225,14 +225,14 @@ class FileManager
 			for (folder in ModFolderManager.ENABLED_MODS)
 			{
 				#if EXCESS_TRACES
-				trace('Checking $folder for a scripts folder');
+				Log.haxeTrace('Checking $folder for a scripts folder');
 				#end
 				final folder_read:Array<String> = readDirectory('${ModFolderManager.MODS_FOLDER}${folder}/');
 
 				if (folder_read.contains('scripts'))
 				{
 					#if EXCESS_TRACES
-					trace('$folder has a scripts folder');
+					Log.haxeTrace('$folder has a scripts folder');
 					#end
 					scriptPaths.push('${ModFolderManager.MODS_FOLDER}${folder}/scripts/');
 				}
@@ -242,7 +242,7 @@ class FileManager
 		for (path in scriptPaths)
 		{
 			#if EXCESS_TRACES
-			trace('reading scriptPath: $path');
+			Log.haxeTrace('reading scriptPath: $path');
 			#end
 			readDir(path);
 		}
@@ -254,13 +254,13 @@ class FileManager
 			traceArr.push(split[split.length - 1]);
 		}
 
-		trace('Loaded script files: ${traceArr}');
+		Log.haxeTrace('Loaded script files: ${traceArr}');
 		return arr;
 	}
 	#else
 	public static function getScriptArray():Array<String>
 	{
-		trace('Not Sys!');
+		Log.warn('Not Sys!');
 		return [];
 	}
 	#end
@@ -334,7 +334,7 @@ class FileManager
 			throw 'A path is required.';
 		}
 		#else
-		trace('NOT SYS!');
+		Log.warn('NOT SYS!');
 		#end
 	}
 

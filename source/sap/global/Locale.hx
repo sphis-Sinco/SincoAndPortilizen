@@ -23,14 +23,21 @@ class Locale
 		}
 		else
 		{
-                        localeName = Reflect.getProperty(languageJson, 'internal-name');
+			localeName = Reflect.getProperty(languageJson, 'internalname');
 
 			if (localeName == null)
 			{
-				Log.warn('The "$language" locale does not have the "internal-name" field.');
+				Log.info('The "$language" locale does not have the "internalname" field.');
 
 				localeName = language;
 			}
+
+			final localeAssetSuffix:String = Reflect.getProperty(languageJson, 'asset-path');
+
+			if (localeAssetSuffix == null)
+				FileManager.LOCALIZED_ASSET_SUFFIX = '';
+			else
+				FileManager.LOCALIZED_ASSET_SUFFIX = localeAssetSuffix;
 		}
 	}
 

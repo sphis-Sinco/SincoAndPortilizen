@@ -1,6 +1,5 @@
 {
-        "internal-name": "english",
-        "asset-path": "",
+        "internalname": "english",
 
         "mainmenu.play": "play",
         "mainmenu.credits": "credits",

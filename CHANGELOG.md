@@ -8,6 +8,7 @@ The game has been reprogrammed almost from the ground up
 ### Removed
 - The `TitleState` character ring characters no longer use a shader
 ### Changed
+- Improved locales
 - The `TitleState` intro sequence now uses `RetroCameraFade` (another FNF thing)
 - `GENERATED_BY` is now `GAME_WATERMARK`
 - The `DONE` title sequence is now `COMPLETE`

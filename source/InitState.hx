@@ -10,6 +10,7 @@ class InitState extends FlxState
 		Timer.measure(function()
 		{
 			trace('init');
+
 			ModsInit();
 			LanguageInit();
 
@@ -115,7 +116,8 @@ class InitState extends FlxState
 		Timer.measure(function()
 		{
 			trace('language init');
-                        Global.LOCALE.initalizeLocale('english');
+
+			Global.LOCALE = new sap.global.Locale('english');
 		});
 	}
 }

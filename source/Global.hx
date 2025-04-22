@@ -1,7 +1,5 @@
 package;
 
-import sap.global.Locale;
-
 class Global
 {
 	// QUALITY OF LIFE \\
@@ -9,7 +7,7 @@ class Global
 	/**
 	 * A class with locale management
 	 */
-	public static var LOCALE:Locale;
+	public static var LOCALE:sap.global.Locale;
 
 	/**
 	 * A text string with the game name and version
